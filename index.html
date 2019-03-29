@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器插件</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="wap-font-scale" content="no">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1,user-scalable=no">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<style>
+		.main{
+			padding: 20px 0;
+		}
+		.test{
+			margin: 0px 15px 20px; border-top: 1px solid green; border-bottom: 1px solid green;
+			padding: 0px 5px; display: flex; flex-direction: row; 
+			justify-content: space-between; height: 50px;
+		}
+		.test .le{
+			flex: none; width: 110px; display: flex;align-items: center;
+		}
+		.test .rig{
+			display: flex; flex: auto; align-items: center; justify-content: flex-end;
+			height: 100%; overflow: hidden; font-size: 16px;
+		}
+		input{
+			height: 30px; line-height: 30px; width: 200px; border: 0; 
+			font-size: 16px; text-align: right;
+		}
+		h2{
+			text-align: center; padding: 20px 0;
+		}
+	</style>
+	<link rel="stylesheet" href="./css/pickerSelect.css">
+</head>
+<body>
+	<div class="main">
+		<h2 >选择器插件pickSelect</h2>
+		<!-- 如果消费宝余额充足，则按钮是确认支付，如果有余额提示，微信补不足的 -->
+		<div style="padding: 10px 15px; ">Input 输入框的</div>
+		<div class="test">
+			<div class="le">普通选择02</div>
+			<input class="rig" type="text" id="normal02" placeholder="请选择" >
+		</div>
+
+		<div class="test">
+			<div class="le">选择日期</div>
+			<div class="rig" id="test"></div>
+		</div>
+		<div class="test">
+			<div class="le">选择时间</div>
+			<div class="rig" id="time"></div>
+		</div>
+		<div class="test">
+			<div class="le">选择日期时间</div>
+			<div class="rig" id="datetime"></div>
+		</div>
+		<div style="padding: 10px 15px; ">地区选择三级联动</div>
+		<div class="test">
+			<div class="le">选择地区</div>
+			<div class="rig" id="test01">新疆维吾尔自治区 乌鲁木齐市 沙依巴克区</div>
+		</div>
+
+		<div class="test">
+			<div class="le">普通选择</div>
+			<div class="rig" id="normal"></div>
+		</div>
+
+	</div>
+	
+	<script src="./js/citysInfo.min.js"></script>
+	<script src="./js/pickerSelect.min.js"></script>
+	<!-- <script src="./js/pickerSelect.js"></script> -->
+	<script>
+		var picker01 = new pickerSelect({
+			trigger: '#test',
+			type: 'date',
+			centerText: '选择日期',
+			format: '-',
+		});
+		
+		var picker02 = new pickerSelect({
+			trigger: '#time',
+			type: 'time',
+			centerText: '选择时间', 
+			format: ':'
+		});
+
+		var picker03 = new pickerSelect({
+			trigger: '#datetime',
+			type: 'datetime'
+		});
+
+		var picker04 = new pickerSelect({
+			trigger: '#test01',
+			format: ' ',
+			centerText: '选择地区',
+			cascade: true, //级联
+			initData: citysArr.result
+		});
+		
+		var picker05 = new pickerSelect({
+			trigger: '#normal',
+			format: ' ',
+			centerText: '请选择',
+			initData: [[2018,2019,2020,2021], ['春', '夏', '秋', '冬']]
+		})
+
+		var picker06 = new pickerSelect({
+			trigger: '#normal02',
+			format: ' ',
+			centerText: '请选择',
+			initData: [[2018,2019,2020,2021], ['春', '夏', '秋', '冬']]
+		})
+	</script>
+</body>
+</html>

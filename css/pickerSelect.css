@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.picker-mobile {
+  opacity: 0;
+  z-index: 1000000;
+  visibility: hidden;
+  transition: opacity 0.4s, z-index 0.4s;
+}
+
+.picker-mobile .picker-masker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #eee;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99998;
+  display: block;
+}
+
+.picker-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 99999;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.picker-container .picker-panel {
+  position: relative; overflow: hidden;
+}
+.picker-container .wheels {
+  padding: 0px 0px; overflow: hidden; 
+  box-sizing: border-box;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.picker-container .wheel {
+  position: relative;
+  float: left;
+  height: 200px;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+.picker-container .wheel ul {
+  display: block;
+  text-align: center;
+  transition: transform 0.18s ease-out;
+  -webkit-transform: 0.18s ease-out;
+  list-style: none;
+}
+
+.picker-container .wheel ul li {
+  font-size: 16px;
+  display: block;
+  font-family: PingFangSC-Regular, sans-serif;
+  height: 40px; color: #333;
+  line-height: 40px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition: transform 0.18s ease-out;
+  -webkit-transform: 0.18s ease-out;
+}
+.picker-container .wheel ul li.selected{
+	font-size: 18px;
+}
+.picker-container .picker-tool {
+  height: 45px;
+  display: flex;
+  border-color: transparent transparent #ccc transparent;
+}
+.picker-container .picker-tool .item-t {
+  display: flex;
+  height: 45px;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.picker-container .picker-tool .cancel-btn,
+.picker-tool .sure-btn {
+  width: 66px;
+}
+
+.picker-container .picker-tool .center {
+  flex: auto; justify-content: center; flex-direction: row;
+}
+.picker-container .picker-tool .item-t .def-span{
+	display: flex; flex: none; 
+	padding: 3px 5px; margin: 0 5px;
+	border: 1px solid #d1d1d1; 
+	border-radius: 3px; font-size: 14px;
+}
+.picker-container .picker-tool .item-t .def-span.actived{
+	border: 1px solid #1db223; color: #1db223;
+}
+.picker-container .selectLine {
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  top: 80px;
+  border-color: #ccc transparent #ccc transparent;
+  pointer-events: none;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.picker-container .shadowMask {
+  position: absolute;
+  top: 0;
+  z-index: 10001;
+  width: 100%;
+  height: 200px;
+  /*background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(rgba(255, 255, 255, 0)), to(#ffffff));*/
+  /*background: -webkit-linear-gradient(top, #ffffff, rgba(255, 255, 255, 0), #ffffff);
+  background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0), #ffffff);*/
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.95)), to(rgba(255, 255, 255, 0.6))), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.95)), to(rgba(255, 255, 255, 0.6)));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+  background-position: top, bottom;
+  background-size: 100% 80px;
+  background-repeat: no-repeat;
+  /*opacity: 0.9;*/
+  pointer-events: none;
+}
+.border {
+  border: 1px solid rgba(204, 204, 204, 0.5);
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .border {
+    border: 0.5px solid rgba(204, 204, 204, 0.5)
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 3) {
+  .border {
+    border: 0.333333px solid rgba(204, 204, 204, 0.5)
+  }
+}

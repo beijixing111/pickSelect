@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0" />
+      <!-- 是否启动webapp功能，会删除默认的苹果工具栏和菜单栏。 -->
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <!-- 这个主要是根据实际的页面设计的主体色为搭配来进行设置。 -->
+      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      <!-- 忽略页面中的数字识别为电话号码,email识别 -->
+      <meta name="format-detection"content="telephone=no, email=no" />
+      <!-- 启用360浏览器的极速模式(webkit) -->
+      <meta name="renderer" content="webkit">
+      <!-- 避免IE使用兼容模式 -->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!--  针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓    -->
+      <meta name="HandheldFriendly" content="true">
+      <!-- 微软的老式浏览器 -->
+      <meta name="MobileOptimized" content="320">
+      <!-- uc强制竖屏 -->
+      <meta name="screen-orientation" content="portrait">
+      <!-- QQ强制竖屏 -->
+      <meta name="x5-orientation" content="portrait">
+      <!-- UC强制全屏 -->
+      <meta name="full-screen" content="yes">
+      <!-- QQ强制全屏 -->
+      <meta name="x5-fullscreen" content="true">
+      <!-- UC应用模式 -->
+      <meta name="browsermode" content="application">
+      <!-- QQ应用模式 -->
+      <meta name="x5-page-mode" content="app">
+      <!-- windows phone 点击无高光 -->
+      <meta name="msapplication-tap-highlight" content="no">
+      <title>时间段选取</title>
+      <link rel="stylesheet" type="text/css" href="../../css/mobilereset.css" />
+      <link rel="stylesheet" type="text/css" href="./pickerRange.css">
+      <script type="text/javascript">
+       !function(n){
+            e=n.document,
+            t=e.documentElement,
+            i=640,
+            d=i/64,
+            o="orientationchange"in n?"orientationchange":"resize",
+            a=function(){
+              var n=t.clientWidth||320;
+              n>640&&(n=640),
+              t.style.fontSize=n/d+"px"
+              };
+            e.addEventListener&&(n.addEventListener(o,a,!1),
+            e.addEventListener("DOMContentLoaded",a,!1))
+        }(window);
+      </script>
+      <style>
+        .test{
+          padding: 40px;
+        }
+        .time{
+          width: 310px; height: 40px; font-size: 16px;
+          border: 1px solid #ccc; border-radius: 5px;
+          margin: 15px 0;
+        }
+        h3{
+          font-size: 20px; 
+        }
+      </style>
+  </head>
+  <body>
+    <div class="test">
+      <!-- pattern="\d*"  digit -->
+      <h3>日期范围选择</h3>
+      <input class="time" type="text" value="2019-03-02~2019-03-09" id="daterange">  
+      <h3>营业时间选择</h3>
+      <input class="time" type="text" value="8:00~22:00" id="timerange">
+      <h3>日期时间范围选择</h3>
+      <input class="time" type="text" value="2019-03-05 14:49~2019-03-06 14:49" id="datetime">
+
+    </div>
+    <script src="./pickerRange.js"> </script>
+    <script>
+      window.onload = function() {
+        var daterange = new pickerRange({
+          trigger: 'daterange',
+          type: 'daterange'
+        }, onmoveend);
+
+        //回调函数
+        function onmoveend(m,n) {
+          console.log(m,n);
+        }
+        var timerange = new pickerRange({
+          trigger: 'timerange',
+          type: 'timerange',
+          format: 'h:min~h:min'
+        });
+        
+        var datetime = new pickerRange({
+          trigger: 'datetime',
+          type: 'datetime'
+        });
+
+      }
+    </script>
+  </body>
+</html>        
